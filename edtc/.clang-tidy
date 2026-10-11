@@ -1,0 +1,90 @@
+---
+Checks:
+  - 'bugprone-*'
+  - 'clang-analyzer-*'
+  - 'clang-diagnostic-*'
+  - 'misc-*'
+  - 'modernize-*'
+  - 'performance-*'
+  - 'portability-*'
+  - 'readability-*'
+  - 'cppcoreguidelines-pro-type-member-init'
+  - '-bugprone-easily-swappable-parameters'
+  - '-readability-magic-numbers'
+  - '-readability-use-anyofallof'
+  - '-misc-non-private-member-variables-in-classes'
+  - '-misc-no-recursion'
+  - '-modernize-avoid-c-arrays'
+  - '-modernize-avoid-variadic-functions'
+  - '-modernize-use-trailing-return-type'
+  - '-modernize-deprecated-headers'
+  - '-clang-diagnostic-unknown-warning-option'
+  - '-portability-avoid-pragma-once'
+
+WarningsAsErrors: '*'
+
+HeaderFilterRegex: '.*/(base|test|kernel|libs|boot|user)/.*\.h(pp)?$'
+
+FormatStyle: file
+
+CheckOptions:
+  - key: readability-identifier-naming.TypeCase
+    value: CamelCase
+  - key: readability-identifier-naming.ConceptCase
+    value: CamelCase
+  - key: readability-identifier-naming.TemplateParameterCase
+    value: CamelCase
+  - key: readability-identifier-naming.ScopedEnumConstantCase
+    value: CamelCase
+  - key: readability-identifier-naming.ScopedEnumConstantPrefix
+    value: 'k'
+  - key: readability-identifier-naming.EnumConstantCase
+    value: UPPER_CASE
+  - key: readability-identifier-naming.ConstantCase
+    value: CamelCase
+  - key: readability-identifier-naming.ConstantPrefix
+    value: 'k'
+  - key: readability-identifier-naming.StaticConstantCase
+    value: CamelCase
+  - key: readability-identifier-naming.StaticConstantPrefix
+    value: 'k'
+  - key: readability-identifier-naming.GlobalVariableCase
+    value: lower_case
+  - key: readability-identifier-naming.GlobalVariablePrefix
+    value: 'g_'
+  - key: readability-identifier-naming.MemberCase
+    value: lower_case
+  - key: readability-identifier-naming.PublicMemberCase
+    value: lower_case
+  - key: readability-identifier-naming.PrivateMemberSuffix
+    value: '_'
+  - key: readability-identifier-naming.ProtectedMemberSuffix
+    value: '_'
+  - key: readability-identifier-naming.FunctionCase
+    value: lower_case
+  - key: readability-identifier-naming.GlobalFunctionCase
+    value: CamelCase
+  - key: readability-identifier-naming.StaticFunctionCase
+    value: lower_case
+  - key: readability-identifier-naming.MethodCase
+    value: lower_case
+  - key: readability-identifier-naming.ClassMethodCase
+    value: lower_case
+  - key: readability-identifier-naming.ParameterCase
+    value: lower_case
+  - key: readability-identifier-naming.LocalVariableCase
+    value: lower_case
+  - key: readability-identifier-naming.LocalConstantPrefix
+    value: 'k'
+  - key: readability-identifier-naming.LocalConstantCase
+    value: CamelCase
+  - key: readability-identifier-naming.NamespaceCase
+    value: lower_case
+  - key: readability-identifier-naming.MacroDefinitionCase
+    value: UPPER_CASE
+  - key: readability-implicit-bool-conversion.AllowPointerConditions
+    value: true
+  - key: readability-identifier-length.IgnoredVariableNames
+    value: '^(i|j|k)$'
+  - key: readability-function-size.ParameterThreshold
+    value: '4'

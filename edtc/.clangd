@@ -1,0 +1,16 @@
+# clangd 配置文件
+# clangd 会自动使用项目根目录的 .clang-format 文件
+
+CompileFlags:
+  # 直接盯 build/ 里的编译数据库:CMake 重新生成时 clangd 能立刻感知
+  # (根目录软链不会因目标文件重建而变化,走软链会拿不到更新)
+  CompilationDatabase: build
+
+Diagnostics:
+  UnusedIncludes: Strict
+  MissingIncludes: Strict
+
+InlayHints:
+  Enabled: Yes
+  ParameterNames: Yes
+  DeducedTypes: Yes

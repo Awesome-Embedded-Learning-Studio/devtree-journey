@@ -1,0 +1,16 @@
+# references
+/reference/ 
+# build
+/build/
+
+# doxygen lint output
+FAILED_DOXYGEN.md
+
+# clangd 索引缓存
+/.cache/
+
+# WSL/Windows 拷贝伴生文件
+*Zone.Identifier
+
+# Python 字节码缓存
+__pycache__/

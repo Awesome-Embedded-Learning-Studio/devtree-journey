@@ -1,0 +1,50 @@
+# 安装: pre-commit install(仅本仓根目录执行,edtc 子目录不再单独配钩子)
+
+repos:
+  # Markdown lint(只查不改写,配置见 .markdownlint.json)
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.38.0
+    hooks:
+      - id: markdownlint
+        args: ['--config', '.markdownlint.json']
+        files: '^(documents|exercises|site)/.*\.md$'
+
+  # 本地钩子
+  - repo: local
+    hooks:
+      - id: clang-format
+        name: clang-format C++ sources (edtc)
+        entry: clang-format -i
+        language: system
+        files: '^edtc/.*\.(c|cc|cpp|cxx|h|hh|hpp|hxx)$'
+
+      - id: doxygen-lint
+        name: doxygen lint (edtc staged headers)
+        entry: python3 edtc/scripts/doxygen/lint.py --files
+        language: system
+        files: '^edtc/.*\.(h|hpp)$'
+        exclude: '^edtc/test/'
+
+      - id: validate-frontmatter
+        name: Validate frontmatter (course pages)
+        entry: python3 tools/validate_frontmatter.py
+        language: system
+        files: '^documents/(vol\d[^/]*/|cookbook/|reading/).*\.md$'
+        pass_filenames: false
+
+  # 卫生与仓库防护
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: check-added-large-files
+        args: ['--maxkb=500']
+      - id: end-of-file-fixer
+        files: '\.(md|txt|gitignore|json|yaml|yml)$'
+      - id: trailing-whitespace
+        files: '^(documents|exercises|site)/.*\.md$'
+      - id: check-yaml
+        files: '^(\.github|site)/.*\.ya?ml$'
+
+# 说明:
+# - doxygen-lint 原配置在 edtc/.pre-commit-config.yaml,已并入本文件,原文件移除
+# - spec pdf 等原文在 .claude/materials/(git 忽略),不受大文件钩子影响
