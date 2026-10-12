@@ -1059,16 +1059,18 @@ html.dark .online-compiler-demo__source-highlight .shiki span {
   background: linear-gradient(135deg,
       var(--vp-c-brand-soft) 0%,
       transparent 50%,
-      var(--vp-c-indigo-soft) 100%);
+      var(--vp-c-brand-soft-2) 100%);
   opacity: 0.5;
   pointer-events: none;
 }
 
+/* 品牌名渐变字:钢蓝自家的三档(亮 #2563EB→#3B82F6,暗 #60A5FA→#BFDBFE 自动跟随),
+   不再借 tamcpp 的 indigo/purple */
 .VPHero .name.clip {
   background: linear-gradient(135deg,
       var(--vp-c-brand-1) 0%,
-      var(--vp-c-indigo-1) 50%,
-      var(--vp-c-purple-1) 100%);
+      var(--vp-c-brand-3) 55%,
+      var(--vp-c-brand-2) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1355,14 +1357,9 @@ html.dark .online-compiler-demo__source-highlight .shiki span {
 
 /* ── Features Grid ───────────────────────────────────────────── */
 
-/* VitePress 默认渲染的首页卡网格整体隐藏：首页卡片已由 HomePathExplorer 的
-   「全部内容」卡片区(HomeFeatureGrid,读同一份 frontmatter)接管。
-   .VPHomeFeatures 只在 layout: home 渲染(全仓仅中英两个首页),不影响其他页面;
-   隐藏副本仍留在 DOM 中(SEO 无损),但移出 tab 序,交互归自渲染副本。 */
-.VPHomeFeatures {
-  display: none;
-}
-
+/* 首页卡片直接用 VitePress 默认网格(卡片皮肤在下方 .VPFeature 规则)。
+   tamcpp 在这里隐藏默认网格、改由 HomePathExplorer 自渲染,咱们没有那个组件,
+   这条 display:none 移植时误留过,会把首页卡片整块藏掉。 */
 .VPFeatures {
   padding-top: 16px;
   padding-bottom: 48px;
@@ -1384,7 +1381,8 @@ html.dark .online-compiler-demo__source-highlight .shiki span {
 }
 
 /* ── 卡片左侧 rail(anatomy OrganCard 手法,用 CSS ::before 模拟,不改 VitePress 默认 DOM)──
-   默认 3px 半透明,hover 加粗到 5px 并提亮;底色按 tier 分层(镜像 icon tier 系统)。 */
+   默认 3px 半透明,hover 加粗到 5px 并提亮。
+   tamcpp 按卷分 green/purple tier 着色,咱们卡片少,统一钢蓝,内容多了再分层。 */
 .VPFeature::before {
   content: '';
   position: absolute;
@@ -1401,11 +1399,6 @@ html.dark .online-compiler-demo__source-highlight .shiki span {
   opacity: 1;
   width: 5px;
 }
-
-/* 三档 tier rail 着色:卷1-4 brand(钢蓝)/卷5-7 green/卷8-12 purple */
-.VPFeatures .item:nth-child(-n+4) .VPFeature::before { background: var(--vp-c-brand-1); }
-.VPFeatures .item:nth-child(n+5):nth-child(-n+7) .VPFeature::before { background: var(--vp-c-green-1); }
-.VPFeatures .item:nth-child(n+8) .VPFeature::before { background: var(--vp-c-purple-1); }
 
 .VPFeature.link:hover {
   border-color: var(--vp-c-brand-1) !important;
@@ -1428,7 +1421,7 @@ html.dark .online-compiler-demo__source-highlight .shiki span {
   border-radius: 12px;
   background: linear-gradient(135deg,
       var(--vp-c-brand-soft) 0%,
-      var(--vp-c-indigo-soft) 100%);
+      var(--vp-c-brand-soft-2) 100%);
   color: var(--vp-c-brand-1);
   font-size: 22px;
   transition: background 0.39s ease,
@@ -1437,6 +1430,8 @@ html.dark .online-compiler-demo__source-highlight .shiki span {
 }
 
 .VPFeature.link:hover .icon {
+  background: linear-gradient(135deg, var(--vp-c-brand-1), var(--vp-c-brand-2));
+  color: var(--vp-c-white);
   transform: scale(1.1);
 }
 
@@ -1471,58 +1466,6 @@ html.dark .online-compiler-demo__source-highlight .shiki span {
 
 .VPFeature.link:hover .link-text-icon {
   transform: translateX(4px);
-}
-
-/* ── Tier Color Coding: Core (1-4) ─ Brand/Indigo ────────────── */
-
-.VPFeatures .item:nth-child(-n+4) .VPFeature .icon {
-  background: linear-gradient(135deg, var(--vp-c-brand-soft), var(--vp-c-indigo-soft)) !important;
-  color: var(--vp-c-brand-1) !important;
-}
-
-.VPFeatures .item:nth-child(-n+4) .VPFeature.link:hover .icon {
-  background: linear-gradient(135deg, var(--vp-c-brand-1), var(--vp-c-indigo-1)) !important;
-  color: var(--vp-c-white) !important;
-}
-
-/* ── Tier Color Coding: Engineering (5-7) ─ Green ────────────── */
-
-.VPFeatures .item:nth-child(n+5):nth-child(-n+7) .VPFeature .icon {
-  background: linear-gradient(135deg, var(--vp-c-green-soft), rgba(16, 185, 129, 0.08)) !important;
-  color: var(--vp-c-green-1) !important;
-}
-
-.VPFeatures .item:nth-child(n+5):nth-child(-n+7) .VPFeature.link:hover .icon {
-  background: linear-gradient(135deg, var(--vp-c-green-1), var(--vp-c-green-2)) !important;
-  color: var(--vp-c-white) !important;
-}
-
-.VPFeatures .item:nth-child(n+5):nth-child(-n+7) .VPFeature.link:hover {
-  border-color: var(--vp-c-green-1) !important;
-}
-
-.VPFeatures .item:nth-child(n+5):nth-child(-n+7) .VPFeature.link:hover .title {
-  color: var(--vp-c-green-1) !important;
-}
-
-/* ── Tier Color Coding: Domain (8-12) ─ Purple ───────────────── */
-
-.VPFeatures .item:nth-child(n+8) .VPFeature .icon {
-  background: linear-gradient(135deg, var(--vp-c-purple-soft), rgba(159, 122, 234, 0.08)) !important;
-  color: var(--vp-c-purple-1) !important;
-}
-
-.VPFeatures .item:nth-child(n+8) .VPFeature.link:hover .icon {
-  background: linear-gradient(135deg, var(--vp-c-purple-1), var(--vp-c-purple-2)) !important;
-  color: var(--vp-c-white) !important;
-}
-
-.VPFeatures .item:nth-child(n+8) .VPFeature.link:hover {
-  border-color: var(--vp-c-purple-1) !important;
-}
-
-.VPFeatures .item:nth-child(n+8) .VPFeature.link:hover .title {
-  color: var(--vp-c-purple-1) !important;
 }
 
 /* ── Dark Mode ───────────────────────────────────────────────── */
