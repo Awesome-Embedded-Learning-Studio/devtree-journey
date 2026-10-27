@@ -1,0 +1,6 @@
+/dts-v1/;
+/plugin/;
+
+&sensor0 {
+	poll-interval = <100>;
+};

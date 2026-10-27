@@ -1,0 +1,24 @@
+/ {
+	compatible = "acme,soc1000";
+	#address-cells = <1>;
+	#size-cells = <1>;
+
+	clk24: clock-controller {
+		compatible = "acme,fixed-clock";
+		clock-frequency = <24000000>;
+		#clock-cells = <0>;
+	};
+
+	uart0: serial@1000 {
+		compatible = "acme,uart";
+		reg = <0x1000 0x100>;
+		clocks = <&clk24>;
+		status = "disabled";
+	};
+
+	dsp@3000 {
+		compatible = "acme,dsp";
+		reg = <0x3000 0x400>;
+		status = "disabled";
+	};
+};

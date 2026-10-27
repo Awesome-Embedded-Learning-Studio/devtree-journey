@@ -6,20 +6,20 @@ description: "面向 Linux 与 U-Boot 的设备树学习与开发小仓库"
 hero:
   name: "DeviceTree-Journey"
   text: "设备树学习与开发小仓库"
-  tagline: "既能顺着读下去,也能按问题查,还能亲手实现一条小型工具链。当前第 0 卷导读试写中,后续卷随内容逐步落目录。"
+  tagline: "既能顺着读下去,也能按问题查,还能亲手实现一条小型工具链。五卷正文已全部试写完毕(草稿),源码走读锁定 Linux v7.2.9 与 U-Boot v2026.10。"
   actions:
     - theme: brand
       text: 从第 0 卷开始读!
-      link: /vol0-introduction/01-why-device-tree
+      link: /vol0-introduction/1-why-device-tree
     - theme: alt
       text: 来 GitHub 转转
       link: https://github.com/Awesome-Embedded-Learning-Studio/devtree-journey
 
 features:
   - title: "第 0 卷 · 先认识设备树"
-    details: "从让串口打出一个字符讲起,看清设备树长什么样、谁跟它打交道,再亲手把 DTS 编译成 DTB。三篇导读试写中。"
+    details: "从让串口打出一个字符讲起,看清设备树长什么样、谁跟它打交道,再亲手把 DTS 编译成 DTB。四篇导读试写中。"
     icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="3"/><circle cx="19" cy="6" r="3"/><circle cx="12" cy="18" r="3"/><path d="M7 8l3.5 7"/><path d="M17 8l-3.5 7"/></svg>'
-    link: /vol0-introduction/01-why-device-tree
+    link: /vol0-introduction/1-why-device-tree
     linkText: 开始阅读
 
   - title: "edtc · 亲手写工具链（WIP）"
@@ -29,7 +29,7 @@ features:
     linkText: 看源码
 
   - title: "实验 · exercises（WIP）"
-    details: "每个实验自带命令与验收条件,照着走一遍就能复现。从 lab/00-bootstrap 起步,当前验证过的工具版本是 dtc v1.8.1。"
+    details: "每个实验自带命令与验收条件,照着走一遍就能复现。lab/00 到 lab/13 共十四组,从最小编译到毕业排错,当前验证过的工具版本是 dtc v1.8.1。"
     icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"/><path d="M6.453 15h11.094"/><path d="M8.5 2h7"/></svg>'
     link: https://github.com/Awesome-Embedded-Learning-Studio/devtree-journey/tree/main/exercises
     linkText: 进实验室

@@ -1,0 +1,15 @@
+/dts-v1/;
+
+/ {
+	compatible = "acme,board-a";
+	model = "ACME Board A";
+
+	#address-cells = <1>;
+	#size-cells = <1>;
+
+	serial@1000 {
+		compatible = "acme,uart";
+		reg = <0x1000 0x100>;
+		status = "okay";
+	};
+};

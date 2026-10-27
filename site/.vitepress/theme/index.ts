@@ -8,6 +8,7 @@ import './article-quote.css'
 import './article-table.css'
 import './article-list.css'
 import HomeHeroVisual from './components/HomeHeroVisual.vue'
+import StatusToast from './components/StatusToast.vue'
 
 export default {
   extends: DefaultTheme,
@@ -16,6 +17,9 @@ export default {
       // 首页 hero 右侧的终端卡(dtc 编译打字机),布局挂点在 custom.css 的
       // 「Hero Image Slot」段(VPHero .image-container 那套)
       'home-hero-image': () => h(HomeHeroVisual),
+      // 文章状态弹窗:frontmatter 带 status/current_status 的页面,进页时
+      // 右下角滑入 MC 成就风格的提示(tamcpp 同款,挂在全局布局槽位)
+      'layout-top': () => h(StatusToast),
     })
   },
 }

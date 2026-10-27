@@ -1,0 +1,18 @@
+/dts-v1/;
+
+/include/ "soc.dtsi"
+
+/ {
+	model = "ACME Lab Board";
+
+	leds {
+		compatible = "acme,leds";
+	};
+
+	/delete-node/ dsp@3000;
+};
+
+&uart0 {
+	clock-frequency = <115200>;
+	status = "okay";
+};

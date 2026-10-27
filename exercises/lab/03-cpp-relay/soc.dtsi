@@ -1,0 +1,10 @@
+/ {
+	compatible = "acme,soc1000";
+	#address-cells = <1>;
+	#size-cells = <1>;
+
+	uart0: serial@1000 {
+		compatible = "acme,uart";
+		reg = <ACME_UART_BASE ACME_UART_SZ>;
+	};
+};

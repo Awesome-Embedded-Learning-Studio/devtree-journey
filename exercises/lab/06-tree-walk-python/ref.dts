@@ -1,0 +1,19 @@
+/dts-v1/;
+
+/ {
+	#address-cells = <1>;
+	#size-cells = <1>;
+
+	clk24: clock-controller {
+		compatible = "demo,fixed-clock";
+		clock-frequency = <24000000>;
+		#clock-cells = <0>;
+	};
+
+	uart@1000 {
+		compatible = "acme,uart";
+		reg = <0x1000 0x100>;
+		clocks = <&clk24>;
+		oem-data = [01 02 3a 4f];
+	};
+};

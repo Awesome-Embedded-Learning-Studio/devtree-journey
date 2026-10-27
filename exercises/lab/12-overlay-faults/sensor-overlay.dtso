@@ -1,0 +1,10 @@
+/dts-v1/;
+/plugin/;
+
+&i2c0 {
+	sensor@48 {
+		compatible = "acme,temp-sensor";
+		reg = <0x48>;
+		status = "okay";
+	};
+};

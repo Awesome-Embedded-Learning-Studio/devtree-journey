@@ -1,0 +1,24 @@
+/dts-v1/;
+
+/ {
+	#address-cells = <1>;
+	#size-cells = <1>;
+
+	fast: fclk: clock@100 {
+		compatible = "demo,clock";
+		reg = <0x100 0x4>;
+		#clock-cells = <0>;
+	};
+
+	idleclk: clock@104 {
+		compatible = "demo,clock";
+		reg = <0x104 0x4>;
+		#clock-cells = <0>;
+	};
+
+	taker@2000 {
+		compatible = "demo,taker";
+		reg = <0x2000 0x10>;
+		clocks = <&fast>, <&fclk>;
+	};
+};

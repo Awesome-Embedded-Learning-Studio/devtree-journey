@@ -1,14 +1,20 @@
-# 构建输出(root 级构建目录,规划正本在 .claude/appendix/standalone-repo.md 第六节)
 /build/
 
 # clangd 索引缓存
 .cache/
 
 .claude
-
 # 站点依赖与构建产物
 site/node_modules/
 site/.vitepress/dist/
 site/.vitepress/cache/
 # node 依赖
 node_modules/
+
+.vscode/
+
+*.dtb
+# 实验产物不入库,按 README 命令重跑即得
+*.dtbo
+*.pp.dts
+*.roundtrip.dts

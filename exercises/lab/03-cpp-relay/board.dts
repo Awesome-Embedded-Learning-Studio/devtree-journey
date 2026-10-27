@@ -1,0 +1,14 @@
+/dts-v1/;
+
+#include <acme-regs.h>
+#include "soc.dtsi"
+
+/ {
+	model = "ACME Lab Board";
+
+	led0: led@8 {
+		compatible = "acme,led";
+		reg = <ACME_LED_BASE 0x4>;
+		status = STATUS_OKAY;
+	};
+};

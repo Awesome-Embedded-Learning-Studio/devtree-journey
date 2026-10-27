@@ -1,0 +1,16 @@
+/dts-v1/;
+
+/memreserve/ 0x10000000 0x00100000;
+
+/ {
+	compatible = "edts,a_demo";        /* 字符串属性 */
+	#address-cells = <1>;            /* 单个 u32 cell */
+	#size-cells = <1>;
+
+	serial@1000 {                    /* 带单元地址的子节点 */
+		compatible = "acme,uart";
+		reg = <0x1000 0x100>;    /* 两个 cell */
+		clock-frequency = <115200>;
+		status = "okay";
+	};
+};

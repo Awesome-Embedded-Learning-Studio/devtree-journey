@@ -1,0 +1,10 @@
+/dts-v1/;
+/plugin/;
+
+&spi0 {
+	flash@0 {
+		compatible = "acme,spi-flash";
+		reg = <0>;
+		status = "okay";
+	};
+};
